@@ -1,0 +1,27 @@
+.server-visited{
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 1px;
+    border-color: black;
+}
+
+.server-unvisited{
+    height: 50px;
+    width: 50px;
+    background-color: yellow;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 1px;
+    border-color: black;
+}
+
+.inline{
+    float: left;
+}
+
+.hide{
+    display: none;
+}

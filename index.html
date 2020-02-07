@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FF14</title>
+        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="iteminfo.css" />
+    </head>
+
+    <body>
+        <h1>FF14マケボとかなんとか</h1>
+        <h2>チェックしたアイテム</h2>
+        <h3>Current World: <span id="currentWorld"></span></h3>
+        <h4 id="backButton" class="hide">Back</h4>
+        <div id="searchedItem"></div>
+        <div id="itemInfo" class="hide">
+            <h2>Details for <span id="itemName"></span></h2>
+            <div class="grid-container">
+                <div class="servers">
+                    <h4 id="view-all">All</h4>
+                    <h4 id="anima-filter">Anima</h4>
+                    <h4 id="asura-filter">Asura</h4>
+                    <h4 id="belias-filter">Belias</h4>
+                    <h4 id="chocobo-filter">Chocobo</h4>
+                    <h4 id="hades-filter">Hades</h4>
+                    <h4 id="ixion-filter">Ixion</h4>
+                    <h4 id="mandragora-filter">Mandragora</h4>
+                    <h id="masamune-filter"4>Masamune</h id="asura-filter"4>
+                    <h4 id="pandaemonium-filter">Pandaemonium</h4>
+                    <h4 id="shinryu-filter">Shinryu</h4>
+                    <h4 id="titan-filter">Titan</h4>
+                </div>
+                <div class="itemInfo">
+                    <table class="itemInfoTable">
+                        <thead>
+                            <tr>
+                                <th id="server-column">Server</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                                <th>HQ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemListingsBody">
+
+                        </tbody>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

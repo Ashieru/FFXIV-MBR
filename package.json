@@ -1,0 +1,18 @@
+{
+  "name": "ff14-mbr",
+  "version": "1.0.0",
+  "description": "An app to record market board details that were viewed by the user",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Asiel",
+  "license": "MIT",
+  "dependencies": {
+    "node-machina-ffxiv": "^2.31.36",
+    "xivapi-js": "^0.3.0"
+  },
+  "devDependencies": {
+    "electron": "^7.1.10"
+  }
+}
