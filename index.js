@@ -180,6 +180,7 @@ const generateSearchedItemList = (arg) => {
     for(var i = 0; i<arg.length; i++){
         const div = document.createElement('div');
         const itemNameButton = document.createElement('button');
+        itemNameButton.classList.add("button");
         itemNameButton.setAttribute("itemid", arg[i].itemID)
         itemNameButton.onclick = function(){
             // console.log("CLICKEDDD")
@@ -201,8 +202,9 @@ const generateSearchedItemList = (arg) => {
         div.appendChild(itemNameButton);
 
         const server_visited_table = document.createElement('table');
-        server_visited_table.setAttribute('width', '100%')
-        server_visited_table.setAttribute('height', '50px')
+        server_visited_table.classList.add("table");
+        // server_visited_table.setAttribute('width', '100%')
+        // server_visited_table.setAttribute('height', '50px')
         const svt_row = document.createElement('tr');
         // console.log(arg[i])
         Object.keys(arg[i].listings).forEach((key, index) => {
