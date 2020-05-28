@@ -27,7 +27,7 @@ const serverName = {
 
 /** Event handler for when the back button (that appears in the item info page) */
 document.getElementById("backButton").onclick = function(){
-    document.getElementById("backButton").className = "hide";
+    // document.getElementById("backButton").className = "hide";
     document.getElementById("searchedItem").classList.remove("hide");
     document.getElementById("itemInfo").className = "hide";
 }
@@ -121,7 +121,7 @@ const updateItemName = async () => {
         let ret = await xiv.data.get('item', searchedItemData[i].itemID).then(token => { return token.Name});
         searchedItemData[i].itemName = ret
     }
-    generateSearchedItemList(searchedItemData, 'func')
+    generateSearchedItemList(searchedItemData)
 }
 
 const updateListingTable = () => {
@@ -171,9 +171,9 @@ const updateListingTable = () => {
     has been updated. On first generation, the name is not showed as the item name
     has not been updated but the xivapi.
  */
-const generateSearchedItemList = (arg, src) => {
+const generateSearchedItemList = (arg) => {
     // console.log("item:search called")
-    searchedItemData = arg;
+    // searchedItemData = arg;
 
     searchedItemList.innerHTML = "";
 
@@ -184,7 +184,7 @@ const generateSearchedItemList = (arg, src) => {
         itemNameButton.onclick = function(){
             // console.log("CLICKEDDD")
             document.getElementById("searchedItem").className = "hide";
-            document.getElementById("backButton").classList.remove("hide");
+            // document.getElementById("backButton").classList.remove("hide");
             selectedItem = itemNameButton.getAttribute('itemid');
             selectedItemData = searchedItemData.filter(i => i.itemID == selectedItem)
             document.getElementById("itemInfo").classList.remove("hide")
@@ -223,16 +223,11 @@ const generateSearchedItemList = (arg, src) => {
         div.appendChild(server_visited_table)
         searchedItemList.appendChild(div);
     }
-
-    if(src == "ipc"){
-        updateItemName();
-    }
 }
 
 ipcRenderer.on('item:search', async (_evt, arg) => {
     searchedItemData = arg
-    generateSearchedItemList(arg, "ipc");
-
+    updateItemName();
 })
 
 ipcRenderer.on('player:spawn', function(evt, currentWorldID){
@@ -244,28 +239,37 @@ ipcRenderer.on('player:spawn', function(evt, currentWorldID){
 //sort item listing table
 const itemListingTable = document.querySelector("table");
 
+//Add click events to the table headers
 itemListingTable.querySelectorAll("th").forEach((elem, columnNo) => {
     elem.addEventListener("click", event => {
-        console.log("sort! " + columnNo)
+        // console.log("sort! " + columnNo)
         sortTable(itemListingTable, columnNo);
     })
 })
 
+//Sort
 const sortTable = (table, sortColumn) => {
     const tableBody = itemListingTable.querySelector('tbody');
     const tableData = tableToData(tableBody);
 
     tableData.sort((a,b) => {
-        // WIP: Don't parseInt when sort by server
-        if (parseInt(a[sortColumn]) > parseInt(b[sortColumn])){
-            return 1;        
+        if (sortColumn === 2 || sortColumn === 3 || sortColumn === 1){
+            if (parseInt(a[sortColumn]) > parseInt(b[sortColumn])){
+                return 1;        
+            }
+        }else{
+            if (a[sortColumn] > b[sortColumn]){
+                return 1;        
+            }
         }
+        
         return -1;
     })
 
     dataToTable(tableBody, tableData);
 }
 
+// Function to get the values of the table to an array of arrays
 const tableToData = (tableBody) => {
     const tableData = [];
     tableBody.querySelectorAll('tr').forEach(row => {
@@ -278,6 +282,7 @@ const tableToData = (tableBody) => {
     return tableData;
 }
 
+//Function to put the values in the array of arrays back to table
 const dataToTable = (tableBody, tableData) => {
     tableBody.querySelectorAll('tr').forEach((row, i) => {
         const rowData = tableData[i];

@@ -9,10 +9,10 @@
   "author": "Asiel",
   "license": "MIT",
   "dependencies": {
-    "node-machina-ffxiv": "^2.31.36",
+    "node-machina-ffxiv": "^2.36.14",
     "xivapi-js": "^0.3.0"
   },
   "devDependencies": {
-    "electron": "^7.1.10"
+    "electron": "^7.3.0"
   }
 }
