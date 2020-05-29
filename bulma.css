@@ -312,6 +312,10 @@
   }
   
   html {
+
+    /* self added */
+    scroll-behavior: smooth;
+
     background-color: white;
     font-size: 16px;
     -moz-osx-font-smoothing: grayscale;

@@ -10,9 +10,11 @@
     background-color: cadetblue;
 }
   
-.itemInfo{
-    grid-area: itemInfo;
-    background-color: darkgoldenrod;
+#itemInfo{
+    /* grid-area: itemInfo;
+    background-color: darkgoldenrod; */
+    position:sticky;
+    top: 30px;
 }
 
 .table{

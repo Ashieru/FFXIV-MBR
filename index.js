@@ -29,6 +29,7 @@ const serverName = {
 document.getElementById("backButton").onclick = function(){
     // document.getElementById("backButton").className = "hide";
     document.getElementById("searchedItem").classList.remove("hide");
+    document.getElementById("si-title").classList.remove("hide");
     document.getElementById("itemInfo").className = "hide";
 }
 
@@ -185,6 +186,7 @@ const generateSearchedItemList = (arg) => {
         itemNameButton.onclick = function(){
             // console.log("CLICKEDDD")
             document.getElementById("searchedItem").className = "hide";
+            document.getElementById("si-title").classList.add("hide")
             // document.getElementById("backButton").classList.remove("hide");
             selectedItem = itemNameButton.getAttribute('itemid');
             selectedItemData = searchedItemData.filter(i => i.itemID == selectedItem)
@@ -203,20 +205,21 @@ const generateSearchedItemList = (arg) => {
 
         const server_visited_table = document.createElement('table');
         server_visited_table.classList.add("table");
-        // server_visited_table.setAttribute('width', '100%')
-        // server_visited_table.setAttribute('height', '50px')
+        server_visited_table.classList.add("is-bordered");
         const svt_row = document.createElement('tr');
         // console.log(arg[i])
         Object.keys(arg[i].listings).forEach((key, index) => {
             let svt_name = document.createTextNode(serverName[key])
             if (arg[i].listings[key].length > 0){
                 const svt_cell = document.createElement('td');
-                svt_cell.setAttribute('bgcolor', '#00FF00')
+                svt_cell.classList.add("has-text-weight-semibold");
+                svt_cell.setAttribute('bgcolor', '#50CD65')
                 svt_cell.appendChild(svt_name)
                 svt_row.appendChild(svt_cell)
             }else{
                 const svt_cell = document.createElement('td');
-                svt_cell.setAttribute('bgcolor', '#FF0000')
+                svt_cell.classList.add("has-text-weight-semibold");
+                svt_cell.setAttribute('bgcolor', '#CD5050')
                 svt_cell.appendChild(svt_name)
                 svt_row.appendChild(svt_cell)
             }
@@ -225,6 +228,7 @@ const generateSearchedItemList = (arg) => {
         div.appendChild(server_visited_table)
         searchedItemList.appendChild(div);
     }
+    console.log(searchedItemData);
 }
 
 ipcRenderer.on('item:search', async (_evt, arg) => {
@@ -293,4 +297,26 @@ const dataToTable = (tableBody, tableData) => {
         })
         tableData.push(rowData);
     })
+}
+
+//Scroll to top function
+
+const sttb = document.getElementById("scroll-to-top-button");
+
+//When user scroll down 20px from top, show button
+window.onscroll = function() {scrollFunction()};
+
+const scrollFunction = () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+        sttb.style.display = "block";
+    }else{
+        sttb.style.display = "none";
+    }
+}
+
+const scrollToTop = () => {
+    //Safari
+    document.body.scrollTop = 0;
+    //Chrome, Firefox, IE. Opera
+    document.documentElement.scrollTop = 0;
 }

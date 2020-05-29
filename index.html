@@ -5,37 +5,81 @@
         <meta charset="UTF-8">
         <title>FF14</title>
         <link rel="stylesheet" href="index.css" />
-        <!-- <link rel="stylesheet" href="iteminfo.css" /> -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="bulma.css" />
+        <link href="node_modules/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
     </head>
 
     <body>
         <section class="section">
             <div class="container">
-                <h1 class="title is-2">FF14マケボとかなんとか</h1>
-                <h2 class="title is-3">チェックしたアイテム</h2>
-                <h3 class="title is-4">Current World: <span id="currentWorld"></span></h3>
-                
-                <div id="searchedItem"></div>
+                <section class="hero is-dark is-bold">
+                    <div class="hero-body">
+                        <h1 class="title is-2">FF14マケットボード分析機</h1>
+                        <h3 class="title is-4">今のサーバー: <span id="currentWorld"></span></h3>
+                    </div>
+                </section>
+                <!-- Item list -->
+                <br/>
+                <h2 class="title is-3" id="si-title">チェックしたアイテム</h2>
+                <div id="searchedItem">なし</div>
+
+                <!-- Item details -->
                 <div id="itemInfo" class="hide">
-                    <h4 id="backButton" class="button">Back</h4>
-                    <h2 class="title is-5">Details for <span id="itemName"></span></h2>
+                    <button id="backButton" class="button">戻る</button>
+                    <h2 class="item-name title is-5"><span id="itemName"></span>に関する情報</h2>
                     <div class="columns">
                         <div class="column is-one-third">
-                            <h4 id="view-all">All</h4>
-                            <h4 id="anima-filter">Anima</h4>
-                            <h4 id="asura-filter">Asura</h4>
-                            <h4 id="belias-filter">Belias</h4>
-                            <h4 id="chocobo-filter">Chocobo</h4>
-                            <h4 id="hades-filter">Hades</h4>
-                            <h4 id="ixion-filter">Ixion</h4>
-                            <h4 id="mandragora-filter">Mandragora</h4>
-                            <h id="masamune-filter"4>Masamune</h id="asura-filter"4>
-                            <h4 id="pandaemonium-filter">Pandaemonium</h4>
-                            <h4 id="shinryu-filter">Shinryu</h4>
-                            <h4 id="titan-filter">Titan</h4>
+                            <div class="sticky-nav">
+                                <nav class="panel is-info">
+                                    <p class="panel-heading">
+                                        サーバーリスト
+                                    </p>
+                                    <a id="view-all" class="panel-block">
+                                        全部
+                                    </a>
+                                    <a id="anima-filter" class="panel-block">
+                                        Anima
+                                    </a>
+                                    <a id="asura-filter" class="panel-block">
+                                        Asura
+                                    </a>
+                                    <a id="belias-filter" class="panel-block">
+                                        Belias
+                                    </a>
+                                    <a id="chocobo-filter" class="panel-block">
+                                        Chocobo
+                                    </a>
+                                    <a id="hades-filter" class="panel-block">
+                                        Hades
+                                    </a>
+                                    <a id="ixion-filter" class="panel-block">
+                                        Ixion
+                                    </a>
+                                    <a id="mandragora-filter" class="panel-block">
+                                        Mandragora
+                                    </a>
+                                    <a id="masamune-filter" class="panel-block">
+                                        Masamune
+                                    </a>
+                                    <a id="pandaemonium-filter" class="panel-block">
+                                        Pandaemonium
+                                    </a>
+                                    <a id="shinryu-filter" class="panel-block">
+                                        Shinryu
+                                    </a>
+                                    <a id="titan-filter" class="panel-block">
+                                        Titan
+                                    </a>
+                                    <div class="panel-block">
+                                        <button class="button is-link is-outlined is-fullwidth">
+                                            Get me the cheapest price!
+                                        </button>
+                                    </div>
+                                </nav>
+                            </div>
                         </div>
+
                         <div class="column">
                             <table class="table is-fullwidth">
                                 <thead>
@@ -54,6 +98,9 @@
                             </table>
                         </div>
                     </div>
+                    <button class="button" onclick="scrollToTop()" id="scroll-to-top-button">
+                        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
         </section>
