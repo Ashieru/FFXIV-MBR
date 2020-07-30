@@ -4,3 +4,4 @@ An Electron application used to automatically record market board data (price, q
 ## :construction: Work in Progress :construction:
 - [x] Sort recorded listings in ascending and descending order
 - [ ] Feature to find an optimal combination of listings to buy from based on a quantity the user enters
+- [ ] Add another colour code for servers that have been checked but has no listing available instead of showing read
