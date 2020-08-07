@@ -14,13 +14,21 @@ let searchedData = [];
 function createWindow() {
 
     win = new BrowserWindow({
-        width: 1000,
-        height: 1050,
+        width:1000,
+        height: 900,
+        minWidth: 1000,
+        minHeight: 900,
         webPreferences:{
             nodeIntegration: true
-        }
+        },
+        show: false,
+        center: true
     })
-    win.loadFile('index.html')
+    win.loadFile('index.html');
+
+    win.once('ready-to-show', ()=>{
+        win.show()
+    })
 }
 
 // start app

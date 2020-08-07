@@ -9,12 +9,12 @@
   "author": "Asiel",
   "license": "MIT",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@fortawesome/fontawesome-free": "^5.13.1",
     "bulma": "^0.8.2",
-    "node-machina-ffxiv": "^2.36.14",
+    "node-machina-ffxiv": "^2.36.18",
     "xivapi-js": "^0.3.0"
   },
   "devDependencies": {
-    "electron": "^7.3.0"
+    "electron": "^7.3.2"
   }
 }
